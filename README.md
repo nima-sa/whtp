@@ -1,16 +1,3 @@
 # whtp
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This app holds the track of payments when you share the amount with your friends, parents, etc., so that you won't need to note them elsewhere. This app also halves the price and marks the person who is in debt so that you know who should pay the check the next time you were to share the price.
