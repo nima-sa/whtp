@@ -63,6 +63,7 @@ class _InsideScreenState extends State<InsideScreen>
     final dialog = AlertDialog(
       title: Text('Describe'),
       content: TextField(
+        textCapitalization: TextCapitalization.sentences,
         autofocus: true,
         controller: _describeController,
         decoration: InputDecoration(
@@ -105,7 +106,9 @@ class _InsideScreenState extends State<InsideScreen>
   }
 
   void _pay(bool me, [bool _double = false]) {
-    if (_textController.text.isEmpty) {return;}
+    if (_textController.text.isEmpty) {
+      return;
+    }
     var value = double.parse(_textController.text.trim());
     if (_double) {
       value *= 2;
@@ -117,7 +120,9 @@ class _InsideScreenState extends State<InsideScreen>
 
     Map<String, dynamic> entery = {
       'id': '$newID',
-      'value': (me ? -value : value).toString()
+      'value': _double
+          ? (me ? -value / 2 : value / 2).toString()
+          : (me ? -value : value).toString()
     };
 
     setState(() {
