@@ -76,19 +76,21 @@ class _InsideScreenState extends State<InsideScreen>
         ),
       ),
       actions: <Widget>[
-        FlatButton(
-          textColor:
-              MediaQuery.of(context).platformBrightness == Brightness.light
-                  ? Colors.black
-                  : Colors.white,
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            foregroundColor:
+                MediaQuery.of(context).platformBrightness == Brightness.light
+                    ? Colors.black
+                    : Colors.white,
+          ),
           child: Text(
             'Cancel',
           ),
           onPressed: () => Navigator.pop(context),
         ),
-        FlatButton(
-          color: Colors.blue,
-          textColor: Colors.white,
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+              foregroundColor: Colors.white, backgroundColor: Colors.blue),
           child: Text('Done'),
           onPressed: () {
             this.setState(() {
@@ -327,17 +329,17 @@ class _InsideScreenState extends State<InsideScreen>
                       ),
                     ),
                     SizedBox(height: 16),
-                    FlatButton(
+                    TextButton(
                       child:
                           Text('I paid', style: TextStyle(color: Colors.blue)),
-                      onPressed: () => _pay(true),
-                      onLongPress: () => _pay(true, true),
+                      onLongPress: () => _pay(true),
+                      onPressed: () => _pay(true, true),
                     ),
-                    FlatButton(
+                    TextButton(
                       child: Text('They paid',
                           style: TextStyle(color: Colors.blue)),
-                      onPressed: () => _pay(false),
-                      onLongPress: () => _pay(false, true),
+                      onLongPress: () => _pay(false),
+                      onPressed: () => _pay(false, true),
                     ),
                   ],
                 ),

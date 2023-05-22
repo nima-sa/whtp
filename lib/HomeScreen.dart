@@ -79,16 +79,20 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       actions: <Widget>[
-        FlatButton(
-          textColor:
-              MediaQuery.of(context).platformBrightness == Brightness.light
-                  ? Colors.black
-                  : Colors.white,
+        TextButton(
+          style: TextButton.styleFrom(
+            foregroundColor:
+                MediaQuery.of(context).platformBrightness == Brightness.light
+                    ? Colors.black
+                    : Colors.white,
+          ),
           child: Text('Cancel'),
           onPressed: () => Navigator.pop(context),
         ),
-        FlatButton(
-          color: Colors.blue,
+        TextButton(
+          style: TextButton.styleFrom(
+            foregroundColor: Colors.blue,
+          ),
           child: Text('Add'),
           onPressed: () {
             final newID = people.length > 0
