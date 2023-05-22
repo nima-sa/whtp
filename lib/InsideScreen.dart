@@ -67,6 +67,7 @@ class _InsideScreenState extends State<InsideScreen>
         autofocus: true,
         controller: _describeController,
         decoration: InputDecoration(
+          hintText: 'Describe here...',
           enabledBorder: UnderlineInputBorder(
             borderSide: BorderSide(color: Colors.grey),
           ),
@@ -76,8 +77,8 @@ class _InsideScreenState extends State<InsideScreen>
         ),
       ),
       actions: <Widget>[
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
+        TextButton(
+          style: TextButton.styleFrom(
             foregroundColor:
                 MediaQuery.of(context).platformBrightness == Brightness.light
                     ? Colors.black
@@ -88,9 +89,10 @@ class _InsideScreenState extends State<InsideScreen>
           ),
           onPressed: () => Navigator.pop(context),
         ),
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-              foregroundColor: Colors.white, backgroundColor: Colors.blue),
+        TextButton(
+          style: TextButton.styleFrom(
+            foregroundColor: Colors.blue,
+          ),
           child: Text('Done'),
           onPressed: () {
             this.setState(() {
@@ -124,7 +126,8 @@ class _InsideScreenState extends State<InsideScreen>
       'id': '$newID',
       'value': _double
           ? (me ? -value / 2 : value / 2).toString()
-          : (me ? -value : value).toString()
+          : (me ? -value : value).toString(),
+      'double': _double,
     };
 
     setState(() {
@@ -211,11 +214,29 @@ class _InsideScreenState extends State<InsideScreen>
                           children: <Widget>[
                             Material(
                               child: ListTile(
-                                title: Text(
-                                  double.parse(history['value'])
-                                      .abs()
-                                      .toString(),
-                                  // style: TextStyle(color: Colors.white),
+                                title: Row(
+                                  children: [
+                                    Text(
+                                      double.parse(history['value'])
+                                          .abs()
+                                          .toString(),
+                                      // style: TextStyle(color: Colors.white),
+                                    ),
+                                    if (history['double'] ?? false)
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                          left: 8.0,
+                                          bottom: 4,
+                                        ),
+                                        child: Text(
+                                          '2×',
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: Colors.blue,
+                                          ),
+                                        ),
+                                      ),
+                                  ],
                                 ),
                                 subtitle: history['description'] != null
                                     ? Text(
